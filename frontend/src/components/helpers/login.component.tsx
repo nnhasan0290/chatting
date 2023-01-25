@@ -1,6 +1,6 @@
 const Login = () => {
   return (
-    <form action="" className="flex flex-col gap-3 items-center min-w-[300px]">
+    <form action="" className="flex flex-col gap-3 items-center sm:min-w-[450px] w-auto">
       <input className="input" type="text" placeholder="Enter Email Account" />
 
       <input

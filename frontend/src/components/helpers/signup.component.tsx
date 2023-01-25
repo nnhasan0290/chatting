@@ -1,11 +1,28 @@
 import { useRef } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { showModal } from "../../redux/features/modalSlice";
 
 const SignUp = () => {
   const inputImgRef = useRef<HTMLInputElement>(null);
+  const {modal} = useAppSelector(state => state);
+  const dispatch = useAppDispatch();
+  
   return (
-    <form action="" className="flex flex-col gap-3 items-center min-w-[300px]">
+    <form
+      action=""
+      className="flex flex-col gap-3 items-center sm:min-w-[450px] w-auto"
+    >
       <input className="input" type="text" placeholder="Enter Username" />
-      <input className="input" type="text" placeholder="Enter Email Account" />
+      <div className="flex gap-3 w-full">
+        <input
+          className="input"
+          type="text"
+          placeholder="Enter Email Account"
+        />
+        <span onClick={() => dispatch(showModal())} className="bg-blue-500 flex items-center justify-center cursor-pointer font-[500] text-white px-5 rounded-md">
+          Verify
+        </span>
+      </div>
       {}
       <input
         className="input"
@@ -29,12 +46,12 @@ const SignUp = () => {
           width={50}
           className="rounded-full"
         />
-        <button
-          className="px-10 font-[600] py-3 border rounded-md w-full"
+        <span
+          className="px-10 font-[600] py-3 border rounded-md w-full text-center cursor-pointer"
           onClick={() => inputImgRef.current?.click()}
         >
           Image
-        </button>
+        </span>
       </div>
       <input type="file" hidden ref={inputImgRef} />
 
@@ -48,4 +65,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp
+export default SignUp;
