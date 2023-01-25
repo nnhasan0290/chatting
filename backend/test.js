@@ -9,11 +9,8 @@ var mailOptions = {
 nodemailer
   .createTransport({
     service: "gmail",
-    host: "smtp.gmail.com",
-    port: 2525,
-    secure: false,
     auth: {
-      user: "nazmulhasan02901@gmail.como",
+      user: "nazmulhasan02901@gmail.com",
       pass: "aevgdsegqfuifbsi",
     },
   })
