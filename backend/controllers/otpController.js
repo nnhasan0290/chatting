@@ -1,11 +1,11 @@
-import sendOtpEmail from "../utils/sendOtpEmail";
-import { savedOTPS } from "../utils/sendOtpEmail";
+import sendOtpEmail from "../utils/sendOtpEmail.js";
+import { savedOTPS } from "../utils/sendOtpEmail.js";
 
 export const sendOtpController = (req, res, nex) => {
-  sendOtpEmail(req.body.email);
+  sendOtpEmail(req.body.email, res);
 };
 
-export const verifyOtpContrller = (req, res, next) => {
+export const verifyOtpController = (req, res, next) => {
   let otprecived = req.body.otp;
   let email = req.body.email;
   if (savedOTPS[email] == otprecived) {

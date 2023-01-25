@@ -2,11 +2,11 @@ import nodemailer from "nodemailer";
 
 export let savedOTPS = {};
 
-const sendOtpEmail = (email) => {
+const sendOtpEmail = (email, res) => {
   let digits = "0123456789";
   let limit = 4;
   let otp = "";
-  for (i = 0; i < limit; i++) {
+  for (let i = 0; i < limit; i++) {
     otp += digits[Math.floor(Math.random() * 10)];
   }
 

@@ -1,0 +1,9 @@
+# POST http://localhost:3001/api/sendOtp
+# Content-Type: application/json
+
+# {"email": "nazmulhasan0290@gmail.com"}
+
+POST http://localhost:3001/api/verifyOtp
+Content-Type: application/json
+
+{"email": "nazmulhasan0290@gmail.com", "otp": "9816"}
