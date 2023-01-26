@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useLoginUserMutation } from "../../redux/services/authServices";
 
 interface formData {
   email?: string;
@@ -18,8 +19,12 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+  //-----------Redux -----------------
+  const [loginUser, data] = useLoginUserMutation();
+  console.log(data);
+
   const onSubmit = (data: formData) => {
-    console.log(data);
+    loginUser(data);
   };
 
   return (

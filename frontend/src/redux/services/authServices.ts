@@ -12,9 +12,23 @@ export const authApi = createApi({
     getUsers: builder.query({
       query: () => `home`,
     }),
+    addUser: builder.mutation({
+      query: (body) => ({
+        url: `auth/signup`,
+        method: `POST`,
+        body
+      }),
+    }),
+    loginUser: builder.mutation({
+      query: (body) => ({
+        url: `auth/login`,
+        method: `POST`,
+        body
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUsersQuery } = authApi;
+export const { useGetUsersQuery, useAddUserMutation, useLoginUserMutation } = authApi;

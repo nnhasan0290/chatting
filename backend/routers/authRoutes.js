@@ -1,11 +1,12 @@
 import express from "express";
-import multer from "multer";
-const upload = multer()
-import { signupController } from "../controllers/authController.js";
+import {
+  loginController,
+  signupController,
+} from "../controllers/authController.js";
 
 const router = express.Router();
 
-
-router.route("/auth/signup").post(upload.single('image') ,signupController)
+router.route("/auth/signup").post(signupController);
+router.route("/auth/login").post(loginController);
 
 export default router;

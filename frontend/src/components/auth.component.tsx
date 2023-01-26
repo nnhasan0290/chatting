@@ -10,7 +10,6 @@ const Auth = () => {
 
   const { value } = useAppSelector((state) => state.modal);
   const data = useGetUsersQuery("data");
-  console.log(data);
   return (
     <>
       {value && <Verify />}

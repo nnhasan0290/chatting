@@ -4,6 +4,7 @@ import { showModal } from "../../redux/features/modalSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useAddUserMutation } from "../../redux/services/authServices";
 
 interface formData {
   userName?: string;
@@ -34,10 +35,12 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  console.log(errors);
+  //----------------redux-----------------
+  const [addUser, data] = useAddUserMutation();
 
   const onSubmit = (data: formData) => {
-    console.log(data);
+    const { userName, email, pass } = data;
+    addUser({ userName, email, password: pass });
   };
 
   return (
