@@ -1,13 +1,12 @@
 import Layout from "./components/layout.component";
 import Auth from "./components/auth.component";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import { useGetUsersQuery, useLoadUserQuery } from "./redux/services/authServices";
 
 function App() {
+  const data = useLoadUserQuery("data");
+  console.log(data);
   return (
-    <Provider store={store}>
       <Auth />
-    </Provider>
   );
 }
 
