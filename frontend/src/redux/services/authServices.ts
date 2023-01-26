@@ -5,8 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      "https://3001-nazmul02904-chatting-pnnm3iou22v.ws-us84.gitpod.io/api/",
+    baseUrl: `http://localhost:3001/api/`,
   }),
   endpoints: (builder) => ({
     getUsers: builder.query({
@@ -29,6 +28,7 @@ export const authApi = createApi({
     loadUser: builder.query({
       query: () => ({
         url: `auth/load`,
+        method: `GET`,
         credentials: "include",
       }),
     }),

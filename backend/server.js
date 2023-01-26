@@ -12,10 +12,12 @@ const upload = multer({ dest: "./uploads" });
 
 dotEnv.config({ path: "./backend/config/.env" });
 
-app.use(cors({
-  origin: "https://3000-nazmul02904-chatting-pnnm3iou22v.ws-us84.gitpod.io",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND,
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 
