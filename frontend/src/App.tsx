@@ -1,12 +1,11 @@
 import Layout from "./components/layout.component";
 import Auth from "./components/auth.component";
 import { useLoadUserQuery } from "./redux/services/authServices";
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { currentUser } from "./redux/features/authslice";
+import Loader from "./components/loader.component";
 
 function App() {
-  const { isSuccess, isFetching, data } = useLoadUserQuery(undefined);
+  const { isSuccess, isLoading, data } = useLoadUserQuery("data");
+  if (isLoading) return <Loader />;
   return <>{isSuccess ? <Layout /> : <Auth />}</>;
 }
 

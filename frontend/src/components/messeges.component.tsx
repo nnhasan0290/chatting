@@ -1,8 +1,5 @@
 import { BiExit } from "react-icons/bi";
-import {
-  useLoadUserQuery,
-  useLogoutUserMutation,
-} from "../redux/services/authServices";
+import { useLogoutUserMutation } from "../redux/services/authServices";
 
 const Messages = () => {
   const [logoutUser, data] = useLogoutUserMutation();
@@ -25,9 +22,9 @@ const Messages = () => {
           onClick={() => {
             logoutUser("data");
           }}
-          className="p-2 rounded-full transition-all duration-300 cursor-pointer hover:bg-gray-300"
+          className="flex gap-2 items-center p-2 sm:px-5 text-white bg-red-500 rounded-full font-[600] mr-3 transition-all duration-300 cursor-pointer hover:bg-red-600"
         >
-          <BiExit size={30} />
+          <BiExit size={30} /> <span className="hidden sm:block">Logout</span> 
         </span>
       </div>
       <div className="max-h-[calc(100vh-60px)] mt-5 overflow-auto">

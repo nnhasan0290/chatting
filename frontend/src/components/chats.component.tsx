@@ -2,10 +2,10 @@ import { BiSearchAlt2 } from "react-icons/bi";
 
 const Chats = () => {
   return (
-    <div className="w-full border-r border-l h-[1000px] px-2">
-      <div className="sticky top-0 bg-white border-b max-sm:pr-5">
+    <div className="px-2 w-full">
+      <div className="sticky top-0 bg-white border-b max-sm:pr-5 max-sm:hidden">
         <h2 className="text-black font-[700] sm:text-2xl">Chats</h2>
-        <div className="relative my-2 max-sm:hidden">
+        <div className="relative my-2">
           <input
             type="search"
             className="px-10 py-1 w-full bg-gray-200 rounded-full border outline-none"
