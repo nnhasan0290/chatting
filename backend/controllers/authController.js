@@ -20,13 +20,7 @@ export const loginController = async (req, res, nex) => {
     if (user.password !== req.body.password) {
       throw { message: "Password is not right" };
     }
-    res
-      .status(200)
-      .cookie("token", `${user._id}`, {
-        sameSite: "none",
-        secure: true,
-      })
-      .json({ user });
+    res.status(200).cookie("token", user._id).json({ user });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }

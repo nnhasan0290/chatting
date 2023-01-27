@@ -35,7 +35,7 @@ const Login = () => {
     >
       <input
         className={`input ${errors.email && "border-red-600"}`}
-        type="text"
+        type="email"
         placeholder="Enter Email Account"
         {...register("email")}
       />
