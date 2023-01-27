@@ -33,7 +33,7 @@ export const loadUser = async (req, res, nex) => {
     if (!token) {
       throw { message: "token not found" };
     }
-    const user = await User.find({ _id: token });
+    const user = await User.findOne({ _id: token });
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });

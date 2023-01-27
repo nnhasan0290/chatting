@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { useLoginUserMutation } from "../../redux/services/authServices";
+import { useLoadUserQuery, useLoginUserMutation } from "../../redux/services/authServices";
 
 interface formData {
   email?: string;
@@ -21,9 +21,11 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(schema) });
   //-----------Redux -----------------
   const [loginUser, data] = useLoginUserMutation();
+  const {refetch} = useLoadUserQuery(undefined)
 
   const onSubmit = (data: formData) => {
     loginUser(data);
+    refetch();
   };
 
   return (

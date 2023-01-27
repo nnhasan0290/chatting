@@ -7,6 +7,7 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://3001-nazmul02904-chatting-pnnm3iou22v.ws-us84.gitpod.io/api/`,
   }),
+  tagTypes: ["load"],
   endpoints: (builder) => ({
     addUser: builder.mutation({
       query: (body) => ({
@@ -22,6 +23,7 @@ export const authApi = createApi({
         credentials: "include",
         body,
       }),
+      invalidatesTags: ["load"]
     }),
     loadUser: builder.query({
       query: () => ({
@@ -29,6 +31,7 @@ export const authApi = createApi({
         method: `GET`,
         credentials: "include",
       }),
+      providesTags: ["load"]
     }),
     logoutUser: builder.mutation({
       query: () => ({
@@ -36,6 +39,7 @@ export const authApi = createApi({
         method: `GET`,
         credentials: "include",
       }),
+      invalidatesTags: ["load"]
     }),
   }),
 });
