@@ -5,12 +5,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://localhost:3001/api/`,
+    baseUrl: `https://3001-nazmul02904-chatting-pnnm3iou22v.ws-us84.gitpod.io/api/`,
   }),
   endpoints: (builder) => ({
-    getUsers: builder.query({
-      query: () => `home`,
-    }),
     addUser: builder.mutation({
       query: (body) => ({
         url: `auth/signup`,
@@ -33,14 +30,21 @@ export const authApi = createApi({
         credentials: "include",
       }),
     }),
+    logoutUser: builder.mutation({
+      query: () => ({
+        url: `auth/logout`,
+        method: `GET`,
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
 export const {
-  useGetUsersQuery,
   useAddUserMutation,
   useLoginUserMutation,
+  useLogoutUserMutation,
   useLoadUserQuery,
 } = authApi;

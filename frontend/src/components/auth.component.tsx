@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { useAppSelector } from "../redux/hooks";
-import { useGetUsersQuery } from "../redux/services/authServices";
 import Login from "./helpers/login.component";
 import SignUp from "./helpers/signup.component";
 import Verify from "./verfication.component";
@@ -9,7 +8,6 @@ const Auth = () => {
   const [loginState, setLoginState] = useState(true);
 
   const { value } = useAppSelector((state) => state.modal);
-  const data = useGetUsersQuery("data");
   return (
     <>
       {value && <Verify />}

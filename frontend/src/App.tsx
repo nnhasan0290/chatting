@@ -1,13 +1,10 @@
 import Layout from "./components/layout.component";
 import Auth from "./components/auth.component";
-import { useGetUsersQuery, useLoadUserQuery } from "./redux/services/authServices";
+import { useLoadUserQuery } from "./redux/services/authServices";
 
 function App() {
-  const data = useLoadUserQuery("data");
-  console.log(data);
-  return (
-      <Auth />
-  );
+  const { isSuccess } = useLoadUserQuery("data");
+  return <>{isSuccess ? <Layout /> : <Auth />}</>;
 }
 
 export default App;

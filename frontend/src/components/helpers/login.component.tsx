@@ -21,7 +21,6 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(schema) });
   //-----------Redux -----------------
   const [loginUser, data] = useLoginUserMutation();
-  console.log(data);
 
   const onSubmit = (data: formData) => {
     loginUser(data);

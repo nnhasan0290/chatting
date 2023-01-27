@@ -39,3 +39,19 @@ export const loadUser = async (req, res, nex) => {
     res.status(400).json({ success: false, message: err.message });
   }
 };
+
+export const logoutUser = async (req, res, nex) => {
+  try {
+    const { token } = req.cookies;
+    console.log(req.cookie, req.cookies);
+    if (!token) {
+      throw { message: "token not found" };
+    }
+    res.status(200).clearCookie("token").json({ success: true });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
