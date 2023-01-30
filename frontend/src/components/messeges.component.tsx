@@ -1,4 +1,4 @@
-import { BiExit } from "react-icons/bi";
+import { BiExit, BiSend } from "react-icons/bi";
 import { useLogoutUserMutation } from "../redux/services/authServices";
 
 const Messages = () => {
@@ -24,10 +24,10 @@ const Messages = () => {
           }}
           className="flex gap-2 items-center p-2 sm:px-5 text-white bg-red-500 rounded-full font-[600] mr-3 transition-all duration-300 cursor-pointer hover:bg-red-600"
         >
-          <BiExit size={30} /> <span className="hidden sm:block">Logout</span> 
+          <BiExit size={30} /> <span className="hidden sm:block">Logout</span>
         </span>
       </div>
-      <div className="max-h-[calc(100vh-60px)] mt-5 overflow-auto">
+      <div className="h-[calc(100vh-60px)] pt-5 overflow-auto relative z-[-1]">
         <div className="flex gap-2 items-end mb-2">
           <img
             src="https://th.bing.com/th?id=OIP.ixZ69lPCOZ3ZO5UqSHQGIAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
@@ -43,11 +43,18 @@ const Messages = () => {
             </span>
           </div>
         </div>
-      </div>
-      <div className="my-2 text-right">
-        <span className="px-3 py-2 text-white bg-blue-500 rounded-full max-w-[70%]">
-          This message from you
-        </span>
+        <div className="my-2 text-right">
+          <span className="px-3 py-2 text-white bg-blue-500 rounded-full max-w-[70%]">
+            This message from you
+          </span>
+        </div>
+        <div className="flex absolute right-0 bottom-0 gap-1 items-center pb-2">
+          <input type="text" placeholder="Aa" className="sm:w-[400px] rounded-full  input" />
+          <span className="p-2 rounded-full cursor-pointer hover:bg-gray-300">
+          <BiSend size={30} />
+
+          </span>
+        </div>
       </div>
     </div>
   );
