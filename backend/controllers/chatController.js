@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 
 export const allUsers = async (req, res, nex) => {
   try {
-    const user = await User.find().select("-password");
+    const user = await User.find({_id: {$ne: req.user._id}}).select("-password");
     res.status(200).json({ user });
   } catch (err) {
     res.status(400).json({ message: err.message });

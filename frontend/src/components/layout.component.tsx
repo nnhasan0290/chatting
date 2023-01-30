@@ -9,7 +9,7 @@ const Layout = () => {
     <>
       {canvas && <OffCanvas />}
       <div className="container flex mx-auto min-h-screen">
-        <div className="overflow-auto py-2 h-screen border-r border-l">
+        <div className="overflow-auto h-screen border-r border-l">
           <Chats />
         </div>
         <Messages />

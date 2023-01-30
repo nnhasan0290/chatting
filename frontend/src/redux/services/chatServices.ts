@@ -11,19 +11,20 @@ export const chatApi = createApi({
   tagTypes: ["chat"],
   endpoints: (builder) => ({
     allUsers: builder.query({
-      query: () => `users`,
+      query: () => ({
+        url: "users",
+        method: "GET",
+        credentials: "include",
+      }),
     }),
     allChats: builder.query({
       query: () => ({
         url: "all",
         method: "GET",
         credentials: "include",
-        
       }),
-      
+
       providesTags: ["chat"],
-      
-      
     }),
     accessChat: builder.mutation({
       query: (body) => ({
@@ -48,5 +49,9 @@ export const chatApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAllUsersQuery, useAllChatsQuery, useAccessChatMutation, useDeleteChatMutation } =
-  chatApi;
+export const {
+  useAllUsersQuery,
+  useAllChatsQuery,
+  useAccessChatMutation,
+  useDeleteChatMutation,
+} = chatApi;

@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { BiPlus, BiSearchAlt2, BiTrash } from "react-icons/bi";
+import { BiExit, BiPlus, BiSearchAlt2, BiTrash } from "react-icons/bi";
 import { showOffCanvas } from "../redux/features/modalSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {
+  useLoadUserQuery,
+  useLogoutUserMutation,
+} from "../redux/services/authServices";
 import {
   useAllChatsQuery,
   useDeleteChatMutation,
@@ -13,8 +17,10 @@ const Chats = () => {
   const { data, isLoading, isSuccess } = useAllChatsQuery("data", {
     refetchOnMountOrArgChange: true,
   });
-  const [deleteChat, ld] = useDeleteChatMutation();
-  console.log(ld);
+  const loadState = useLoadUserQuery("data");
+
+  const [logoutUser] = useLogoutUserMutation();
+  const [deleteChat] = useDeleteChatMutation();
 
   const [chats, setChats] = useState([]);
   const [query, setQuery] = useState("");
@@ -29,7 +35,7 @@ const Chats = () => {
     }
   }, [query, isSuccess, data]);
   return (
-    <div className="px-2 w-full">
+    <div className="p-2 w-full h-screen">
       <div className="sticky top-0 bg-white border-b max-sm:pb-3 max-sm:pr-5">
         <div className="flex justify-between items-cener">
           <h2 className="text-black font-[700] max-sm:hidden sm:text-2xl">
@@ -90,6 +96,19 @@ const Chats = () => {
             </div>
           ))}
       </div>
+      <span
+        onClick={() => {
+          logoutUser("data");
+        }}
+        className="flex absolute bottom-2 gap-2 items-center sm:pl-5 text-white bg-blue-500  rounded-full font-[600] mr-3 transition-all duration-300  hover:bg-blue-600"
+      >
+        <span className="hidden capitalize sm:block"> {loadState.data.userName}</span>
+        <span   data-bs-toggle="tooltip"
+            title="Logout" className="p-2 bg-red-400 rounded-full cursor-pointer hover:bg-red-600">
+        <BiExit size={30} />{" "}
+          
+        </span>
+      </span>
     </div>
   );
 };

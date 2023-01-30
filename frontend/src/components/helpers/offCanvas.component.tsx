@@ -5,6 +5,7 @@ import { hideCanvas } from "../../redux/features/modalSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   useAccessChatMutation,
+  useAllChatsQuery,
   useAllUsersQuery,
 } from "../../redux/services/chatServices";
 import Loader from "../loader.component";
@@ -15,6 +16,8 @@ const OffCanvas = () => {
   const [users, setUsers] = useState([]);
   const [accessChat] = useAccessChatMutation();
   const { isSuccess, isLoading, data } = useAllUsersQuery("data");
+  const allChats = useAllChatsQuery("data");
+  console.log(allChats.data.chats);
 
   useEffect(() => {
     if (isSuccess) {
@@ -52,7 +55,11 @@ const OffCanvas = () => {
                   accessChat({ userId: each._id });
                 }}
                 key={i}
-                className="flex gap-3 items-center p-2 mt-1 mb-1 rounded-md cursor-pointer hover:bg-gray-200"
+                className={`flex gap-3 items-center p-2 mt-1 mb-1 rounded-md cursor-pointer hover:bg-gray-200 ${
+                  allChats.data.chats.some(
+                    (e: any) => e.users[1]._id === each._id
+                  ) && "bg-gray-200 cursor-auto opacity-50"
+                }`}
               >
                 <img
                   src="https://th.bing.com/th?id=OIP.ixZ69lPCOZ3ZO5UqSHQGIAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"

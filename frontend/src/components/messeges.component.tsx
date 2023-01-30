@@ -2,7 +2,7 @@ import { BiExit, BiSend } from "react-icons/bi";
 import { useLogoutUserMutation } from "../redux/services/authServices";
 
 const Messages = () => {
-  const [logoutUser, data] = useLogoutUserMutation();
+ 
   return (
     <div className="w-full border-r">
       <div className="border-b h-[60px] shadow-md flex justify-between items-center">
@@ -18,16 +18,9 @@ const Messages = () => {
             Person Name
           </h3>
         </div>
-        <span
-          onClick={() => {
-            logoutUser("data");
-          }}
-          className="flex gap-2 items-center p-2 sm:px-5 text-white bg-red-500 rounded-full font-[600] mr-3 transition-all duration-300 cursor-pointer hover:bg-red-600"
-        >
-          <BiExit size={30} /> <span className="hidden sm:block">Logout</span>
-        </span>
+        
       </div>
-      <div className="h-[calc(100vh-60px)] pt-5 overflow-auto relative z-[-1]">
+      <div className="h-[calc(100vh-60px)] pt-5 overflow-auto relative">
         <div className="flex gap-2 items-end mb-2">
           <img
             src="https://th.bing.com/th?id=OIP.ixZ69lPCOZ3ZO5UqSHQGIAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
